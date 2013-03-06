@@ -105,6 +105,11 @@ gxp.plugins.LayerTree = Ext.extend(gxp.plugins.Tool, {
                 }
             };
         }
+
+        if (!this.baseParams) {
+            this.baseParams = config.baseParams || {};
+        }
+
         if (!this.treeNodeUI) {
             this.treeNodeUI = Ext.extend(
                 GeoExt.tree.LayerNodeUI,

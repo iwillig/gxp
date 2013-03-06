@@ -102,10 +102,20 @@ gxp.plugins.LayerManager = Ext.extend(gxp.plugins.LayerTree, {
             legendXType = "gx_vectorlegend";
         }
         if (legendXType) {
+            // if we are going to add a legend to the layer tree,
+            // determine what parameters we should pass to the
+            // GetLegendGraphic request
             var baseParams;
+
+            // get the baseParams from the loader object
             if (loader && loader.baseAttrs && loader.baseAttrs.baseParams) {
                 baseParams = loader.baseAttrs.baseParams;
+            } else {
+                // if we can't get it from the loader function, check
+                // the original configration object
+                baseParams = this.baseParams;
             }
+
             Ext.apply(attr, {
                 component: {
                     xtype: legendXType,
